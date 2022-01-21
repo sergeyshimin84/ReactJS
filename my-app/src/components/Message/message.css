@@ -1,3 +1,7 @@
-.mess-h1 {
+.message {
     color: red;
+}
+
+.button {
+    background-color: cadetblue;
 }
