@@ -1,12 +1,27 @@
 import React from "react";
-import styles from "./message.css";
 
-export const Message = (props) => {
+export const sendMessage = (author, text) => {
 
-return (
-<h1 className="mess-h1">
-    Hello!
-</h1>
-)
+    const newMessageList = [...messageList];
+    const newMessage = {
+        author,
+        text,
+    };
+    newMessageList.push(newMessage);
+    setMessageList(newMessageList);
 
-}
+};
+
+export const onSubmitMessage = (event) => {
+
+    event.preventDefault();
+    sendMessage("user", value);
+    resetForm();
+
+};
+
+export const onChangeMessageInput = (event) => {
+
+    setValue(event.target.value);
+
+};
