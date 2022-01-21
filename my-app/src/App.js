@@ -1,4 +1,5 @@
 import './App.css';
+import './components';
 import { useEffect, useState } from 'react';
 
 export const Message = () => {
@@ -56,17 +57,20 @@ export const Message = () => {
   return (
     <div>
       <form onSubmit={onSubmitMessage}>
-        <input 
+        <input
+          className='input'
           onChange={onChangeMessageInput}
-          placeholder='type message'
+          placeholder='введите сообщение'
           value={value}
           type="text">
         </input>
-        <button>send</button>
+        <button className='button'>отправить</button>
       </form>
       <ul>
         {messageList.map((item, index) => (
-          <li key={index}>
+          <li 
+            className='list' 
+            key={index}>
             {item.author} - {item.text}
           </li>
         ))}
