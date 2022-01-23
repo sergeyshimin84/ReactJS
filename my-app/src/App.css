@@ -36,16 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-.button {
-  background-color: rgb(0, 217, 255);
-  font-size: large;
-}
-
-.input {
-  font-size: large;
-}
-
-.list {
-  list-style: none;
-}

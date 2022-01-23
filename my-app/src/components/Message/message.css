@@ -1,7 +1,4 @@
-.message {
+.greetings {
     color: red;
-}
-
-.button {
-    background-color: cadetblue;
-}
+    font-size: large;
+};
