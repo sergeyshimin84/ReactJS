@@ -1,6 +1,6 @@
 import {List} from '@material-ui/core';
 import propTypes from 'prop-types';
-import { Message } from '..';
+import { Message } from './Message';
 
 export const MessageList = ({props}) => {
     return (
@@ -25,4 +25,3 @@ MessageList.propTypes = {
 MessageList.defaultProps = {
     messageList: []
 };
-

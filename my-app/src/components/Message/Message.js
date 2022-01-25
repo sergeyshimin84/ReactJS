@@ -12,6 +12,7 @@ export const Massage = (props) => {
 };
 
 Massage.propTypes = {
+    id: propTypes.string,
     text: propTypes.string,
     author: propTypes.string
 };
