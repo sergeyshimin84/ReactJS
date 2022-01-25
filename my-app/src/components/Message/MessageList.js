@@ -1,8 +1,8 @@
-import {List} from '@material-ui/core';
+import { List } from '@material-ui/core';
 import propTypes from 'prop-types';
 import { Message } from './Message';
 
-export const MessageList = ({props}) => {
+export const MessageList = ({ props }) => {
     return (
         <List> 
             {props.messageList.map((item) => (

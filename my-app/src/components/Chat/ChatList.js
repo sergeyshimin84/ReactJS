@@ -1,8 +1,8 @@
-import {List} from '@material-ui/core';
+import { List } from '@material-ui/core';
 import propTypes from 'prop-types';
-import {Chat} from './Chat';
+import { Chat } from './Chat';
 
-export const ChatList = ({list}) => {
+export const ChatList = ({ list }) => {
     return (
         <List> 
             {list.map((item) => (

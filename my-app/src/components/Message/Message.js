@@ -1,7 +1,7 @@
 import { ListItem, ListItemText } from "@material-ui/core";
 import propTypes from "prop-types";
 
-export const Massage = (props) => {
+export const Message = (props) => {
     return (
         <ListItem>
             <ListItemText>
@@ -11,7 +11,7 @@ export const Massage = (props) => {
     );
 };
 
-Massage.propTypes = {
+Message.propTypes = {
     id: propTypes.string,
     text: propTypes.string,
     author: propTypes.string

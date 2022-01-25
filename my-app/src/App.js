@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
-import { ChatList } from "./components";
-import { MassageList } from "./components";
+import { ChatList, MessageList, MessageInput } from "./components";
 
 const useStyles = makeStyles ({
   wrapper: {
@@ -10,7 +9,7 @@ const useStyles = makeStyles ({
   }
 });
 
-const App = () => {
+export const App = () => {
   const classes = useStyles();
   const [messageList, setMessageList] = useState ([]);
 
@@ -42,17 +41,26 @@ const App = () => {
   }, [messageList]);
 
   return (
-    <div>
+    <div className="classes.wrapper">
       <ChatList>
-        list={
-          [
-
-          ]
-        }
+        list={[
+          {
+            name: 'name',
+            id: '1'
+          },
+          {
+            name: 'name',
+            id: '2'
+          },
+          {
+            name: 'name',
+            id: '3'
+          }
+        ]}
       </ChatList>
       <div>
-        <MassageList></MassageList>
-        <MessageInput></MessageInput>
+        <MessageList messageList={messageList}></MessageList>
+        <MessageInput onSend={onSendMessage}></MessageInput>
       </div>
     </div>
   );
