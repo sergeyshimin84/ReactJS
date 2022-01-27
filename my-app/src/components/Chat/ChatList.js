@@ -7,7 +7,8 @@ export const ChatList = ({ list }) => {
         <List> 
             {list.map((item) => (
                 <Chat key={item.id} {...item}></Chat>
-            ))}   
+            ))}
+            <Chat id="1" name="fake"></Chat>   
         </List>
     );
 };
