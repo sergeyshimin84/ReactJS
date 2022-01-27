@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button, makeStyles, Switch, Toolbar } from "@material-ui/core";
-import { ChatList, MessageList, MessageInput } from "./components";
 import { AppBar } from "@material-ui/core";
 import { Home, Profile } from "..";
+import { Messages } from "./components";
 
 export const App = () => {
   
@@ -17,7 +17,13 @@ export const App = () => {
           </Toolbar>
         </AppBar>
         <Switch>
-          <Route component={Chats} path="/chats"></Route>
+          <Route path="/chats">
+            <Chats>
+              <Switch>
+                <Route component={Messages} path="/chats/:chatId"></Route>
+              </Switch>
+            </Chats>
+          </Route>
           <Route component={Profile} path="/profile"></Route>
           <Route component={Home} path="/"></Route>
         </Switch>
