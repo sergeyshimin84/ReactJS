@@ -1,9 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MessageInput, MessageList, CHATS } from "./components";
+import { MessageInput, MessageList } from "./components";
 
-export function Messages() {
+export const Messages = () => {
     const { chatId } = useParams();
     const [messageList, setMessageList] = useState([]);
 
