@@ -16,10 +16,10 @@ export const Chats = () => {
 
     return (
         <div className={classes.wrapper}>
-            <ChatList list={CHATS}></ChatList>
+            <ChatList list={CHATS} />
             <div>
                 <Routes>
-                    <Route component={Messages} path="/chats/:chatId"></Route>
+                    <Route component={Messages} path="/chats/:chatId" />
                 </Routes>
             </div>
         </div>

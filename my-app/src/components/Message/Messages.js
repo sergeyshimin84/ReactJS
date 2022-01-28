@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MessageInput, MessageList } from "./components";
+import { Navigate } from "react-router-dom";
+import { CHATS, MessageInput, MessageList } from "..";
 
 export const Messages = () => {
     const { chatId } = useParams();
@@ -10,10 +11,11 @@ export const Messages = () => {
     const sendMessage = (author, text) => {
         const newMessageList = [...messageList];
         const newMessage = {
-            id: Date.now(),
             author,
-            text,
+            text
         };
+        newMessageList.push(newMessage);
+        setMessageList(newMessageList);
     };
 
     const onSendMessage = (value) => {
@@ -34,11 +36,14 @@ export const Messages = () => {
 
     }, [messageList]);
 
+    if (!CHATS.find(({ id }) => id === chatId)) {
+        return <Navigate replace to="/chats" />;
+    }
+
     return (
         <>
-            <MessageList messageList={messageList}></MessageList>
-            <MessageInput onSend={onSendMessage}></MessageInput>
+            <MessageList messageList={messageList} />
+            <MessageInput onSend={onSendMessage} />
         </>
     );
-
 };

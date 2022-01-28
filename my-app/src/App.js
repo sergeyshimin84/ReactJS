@@ -3,7 +3,8 @@ import { Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Routes } from 'react-router-dom';
-import { Chats, Home, Profile } from "./components";
+import { Home, Profile } from "./components";
+import { Chats } from "./components/Routes/Chats";
 import { Button, Toolbar, AppBar } from "@material-ui/core";
 
 export const App = () => {

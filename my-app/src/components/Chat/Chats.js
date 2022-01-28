@@ -1,5 +1,7 @@
+import { nanoid } from "nanoid";
+
 const createChatMock = (i) => ({
-    id: Date.now(),
+    id: nanoid(),
     name: `name ${i}`
 });
 
