@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState, useRef } from "react";
-import propTypes from 'prop-types';
 import { makeStyles } from "@material-ui/core/styles";
 import { IconButton, InputBase, Paper } from "@material-ui/core";
 import { Send } from "@material-ui/icons";
