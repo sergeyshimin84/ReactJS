@@ -1,3 +1,5 @@
+import React from "react";
+
 const createChatMock = (i) => ({
     id: Date.now(),
     name: `name ${i}`

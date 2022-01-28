@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
-import { Button, makeStyles, Switch, Toolbar } from "@material-ui/core";
-import { AppBar } from "@material-ui/core";
-import { Home, Profile } from "..";
-import { Messages } from "./components";
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Chats, Home, Profile, Messages } from "./components";
+import { Link, Button, Switch, Toolbar, AppBar } from "@material-ui/core";
 
 export const App = () => {
   

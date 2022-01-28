@@ -7,3 +7,4 @@ export * from './Chat/ChatList';
 export * from './Chat/Chats';
 export * from './Routes/Home';
 export * from './Routes/Profile';
+export * from './Routes/Chats';

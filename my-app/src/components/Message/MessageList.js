@@ -1,16 +1,17 @@
+import React from 'react';
 import { List } from '@material-ui/core';
-import propTypes from 'prop-types';
 import { Message } from './Message';
+import propTypes from 'prop-types';
 
 export const MessageList = ({ props }) => {
     return (
-        <List> 
+        <List>
             {props.messageList.map((item) => (
                 <Message key={item.id} {...item}></Message>
-            ))}   
+            ))}
         </List>
     );
-};
+}
 
 MessageList.propTypes = {
     messageList: propTypes.arrayOf (

@@ -1,19 +1,18 @@
+import React from "react";
 import { useState, useEffect } from "react";
-import { useParams, Redirect } from "react-router-dom";
-import { MessageInput } from "..";
-import { MessageList } from "..";
-import {CHATS} from "..";
+import { useParams } from "react-router-dom";
+import { MessageInput, MessageList, CHATS } from "./components";
 
-export const Messages = () => {
-    const {chatId} = useParams();
-    const [MessageList, setMessageList] = useState([]);
+export function Messages() {
+    const { chatId } = useParams();
+    const [messageList, setMessageList] = useState([]);
 
     const sendMessage = (author, text) => {
-        const newMessageList =  [...messageList];
+        const newMessageList = [...messageList];
         const newMessage = {
-          id: Date.now(),
-          author,
-          text,
+            id: Date.now(),
+            author,
+            text,
         };
     };
 
@@ -23,21 +22,17 @@ export const Messages = () => {
 
     useEffect(() => {
         if (messageList.length === 0) {
-          return;
+            return;
         }
-    
+
         const tail = messageList[messageList.length - 1];
         if (tail.author === 'bot') {
-          return;
+            return;
         }
-    
-        sendMessage('bot', 'hello');
-    
-    }, [messageList]);
 
-    if (!CHATS.find(({ id }) => id === chatId)) {
-        return <Redirect to="/chats"></Redirect>;
-    }
+        sendMessage('bot', 'hello');
+
+    }, [messageList]);
 
     return (
         <>

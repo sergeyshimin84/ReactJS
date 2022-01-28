@@ -1,6 +1,7 @@
+import React from 'react';
+import { Chat } from '..';
 import { List } from '@material-ui/core';
 import propTypes from 'prop-types';
-import { Chat } from './Chat';
 
 export const ChatList = ({ list }) => {
     return (

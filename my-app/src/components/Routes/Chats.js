@@ -1,7 +1,6 @@
-import { Route, Switch } from "react-router-dom";
-import { makeStyles } from "@material-ui/core";
+import React from "react";
 import { ChatList, CHATS } from "..";
-import { Children } from "react";
+import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
     wrapper: {
@@ -10,7 +9,7 @@ const useStyles = makeStyles({
     }
 });
 
-export const Chats = () => {
+export const Chats = ({Children}) => {
     const classes = useStyles();
 
     return (
