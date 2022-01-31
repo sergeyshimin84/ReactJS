@@ -1,16 +1,18 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Routes } from 'react-router-dom';
 import { Home, Profile } from "./components";
 import { Chats } from "./components/Routes/Chats";
 import { Button, Toolbar, AppBar } from "@material-ui/core";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 export const App = () => {
   
   return (
-    <div>
+    <Provider store={store}>
       <BrowserRouter>
         <AppBar position="static">
           <Toolbar>
@@ -19,13 +21,13 @@ export const App = () => {
             <Button to="/chats" component={Link} color="inherit">Chats</Button>
           </Toolbar>
         </AppBar>
-        <Routes>
+        <Switch>
           <Route component={Chats} path="/chats"></Route>
           <Route component={Profile} path="/profile"></Route>
           <Route component={Home} path="/"></Route>
-        </Routes>
+        </Switch>
       </BrowserRouter>
-    </div>
+    </Provider>
   )
 };
 

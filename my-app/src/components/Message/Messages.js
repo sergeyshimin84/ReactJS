@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Navigate } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 import { CHATS, MessageInput, MessageList } from "..";
 
 export const Messages = () => {
@@ -37,7 +36,7 @@ export const Messages = () => {
     }, [messageList]);
 
     if (!CHATS.find(({ id }) => id === chatId)) {
-        return <Navigate replace to="/chats" />;
+        return <Redirect to="/chats" />;
     }
 
     return (

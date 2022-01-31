@@ -1,8 +1,7 @@
 import React from "react";
 import { ChatList, Messages, CHATS } from "..";
 import { makeStyles } from "@material-ui/core";
-import { Route } from "react-router-dom";
-import { Routes } from 'react-router-dom';
+import { Route, Switch } from "react-router-dom";
 
 const useStyles = makeStyles({
     wrapper: {
@@ -18,9 +17,9 @@ export const Chats = () => {
         <div className={classes.wrapper}>
             <ChatList list={CHATS} />
             <div>
-                <Routes>
+                <Switch>
                     <Route component={Messages} path="/chats/:chatId" />
-                </Routes>
+                </Switch>
             </div>
         </div>
     );
