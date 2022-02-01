@@ -2,9 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Routes } from 'react-router-dom';
-import { Home, Profile } from "./components";
-import { Chats } from "./components/Routes/Chats";
+import { Home, Profile, Chats } from "./components";
 import { Button, Toolbar, AppBar } from "@material-ui/core";
 import { Provider } from "react-redux";
 import { store } from "./store";
@@ -22,9 +20,9 @@ export const App = () => {
           </Toolbar>
         </AppBar>
         <Switch>
-          <Route component={Chats} path="/chats"></Route>
-          <Route component={Profile} path="/profile"></Route>
-          <Route component={Home} path="/"></Route>
+          <Route component={Chats} path="/chats" />
+          <Route component={Profile} path="/profile" />
+          <Route component={Home} path="/" />
         </Switch>
       </BrowserRouter>
     </Provider>
