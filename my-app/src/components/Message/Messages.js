@@ -1,20 +1,24 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import { CHATS, MessageInput, MessageList } from "..";
+import { createMessage } from "../../store/messages/actions";
+import { getChatMessagesById } from "../../store/messages/selectors";
+import { hasChatById } from "../../store/chats/selectors";
 
 export const Messages = () => {
     const { chatId } = useParams();
-    const [messageList, setMessageList] = useState([]);
+    const dispatch = useDispatch();
+    const messageList = useSelector(getChatMessagesById(chatId));
+    const hasChat = useSelector(hasChatById(chatId));
 
     const sendMessage = (author, text) => {
-        const newMessageList = [...messageList];
         const newMessage = {
             author,
             text
         };
-        newMessageList.push(newMessage);
-        setMessageList(newMessageList);
+        dispatch(createMessage(newMessage, chatId))
     };
 
     const onSendMessage = (value) => {
@@ -22,7 +26,7 @@ export const Messages = () => {
     };
 
     useEffect(() => {
-        if (messageList.length === 0) {
+        if (!messageList || messageList.length === 0) {
             return;
         }
 
@@ -35,8 +39,8 @@ export const Messages = () => {
 
     }, [messageList]);
 
-    if (!CHATS.find(({ id }) => id === chatId)) {
-        return <Redirect to="/chats" />;
+    if (!hasChat) {
+        return <Redirect to="/chats"/>;
     }
 
     return (

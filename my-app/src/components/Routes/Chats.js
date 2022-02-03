@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { ChatList, Messages, CHATS } from "..";
-import { makeStyles } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
 import { Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { nanoid } from "nanoid";
+import { removeMessagesByChatID } from "../../store/messages/actions";
+import { createChat, setChats, removeChat } from "../../store/chats/actions";
 
 const useStyles = makeStyles({
     wrapper: {
@@ -11,11 +15,32 @@ const useStyles = makeStyles({
 });
 
 export const Chats = () => {
+    const chats = useSelector(getChatList);
+    const dispatch = useDispatch();
     const classes = useStyles();
+
+    const onCreate = useCallback(() => {
+        dispatch(createChat({
+            id: nanoid(),
+            name: 'chatName'
+        }))
+    }, []);
+
+    const onDelete = (chatId) => {
+        dispatch(removeChat(chatId))
+        dispatch(removeMessagesByChatID(chatId))
+    };
+
+    useEffect(() => {
+        dispatch(setChats(CHATS))
+    }, []);
 
     return (
         <div className={classes.wrapper}>
-            <ChatList list={CHATS} />
+            <div>
+                <ChatList onDelete={onDelete} list={chats}/>
+                <Button onClick={onCreate}>Create chat</Button>
+            </div>
             <div>
                 <Switch>
                     <Route component={Messages} path="/chats/:chatId" />
