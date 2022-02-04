@@ -1,5 +1,9 @@
 import { CREATE_CHAT, REMOVE_CHAT, SET_CHATS } from "./actions";
 
+const initialState = {
+    chats: [],
+}
+
 export const chatsReducer = (state = initialState, action) => {
 
     switch (action.type) {

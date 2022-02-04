@@ -7,7 +7,7 @@ export const MessageList = ({ props }) => {
     return (
         <List>
             {props.messageList.map((item) => (
-                <Message key={item.id} {...item}></Message>
+                <Message key={item.id} {...item}/>
             ))}
         </List>
     );

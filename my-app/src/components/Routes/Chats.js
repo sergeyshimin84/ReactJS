@@ -1,11 +1,13 @@
-import React, { useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { ChatList, Messages, CHATS } from "..";
-import { Button, makeStyles } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import { Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 import { removeMessagesByChatID } from "../../store/messages/actions";
 import { createChat, setChats, removeChat } from "../../store/chats/actions";
+import { getChatList } from "../../store/chats/selectors";
 
 const useStyles = makeStyles({
     wrapper: {
