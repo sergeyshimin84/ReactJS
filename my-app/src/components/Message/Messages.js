@@ -1,8 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
-import { CHATS, MessageInput, MessageList } from "..";
+import { MessageInput, MessageList } from "..";
 import { createMessage } from "../../store/messages/actions";
 import { getChatMessagesById } from "../../store/messages/selectors";
 import { hasChatById } from "../../store/chats/selectors";
