@@ -1,10 +1,12 @@
-import './App.css';
-import {Message} from './components';
+import "./styles.css";
 
-function App() {
+import { Layout } from "./components/Layout";
+import { ExercisesRoute, navigation } from "./pages";
+
+export default function App() {
   return (
-    <Message></Message>  
+    <Layout navigation={navigation} className="App">
+      <ExercisesRoute />
+    </Layout>
   );
 }
-
-export default App;
