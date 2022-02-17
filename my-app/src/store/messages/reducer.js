@@ -1,4 +1,4 @@
-import { CREATE_MESSAGE, REMOVE_MESSAGES_BY_CHAT_ID } from "./actions";
+import { ADD_MESSAGE, REMOVE_MESSAGES_BY_CHAT_ID } from "./actions";
 
 const initiatialState = {
     messages: {},
@@ -7,7 +7,7 @@ const initiatialState = {
 export const messagesReducer = (state = initiatialState, action) => {
 
     switch (action.type) {
-        case CREATE_MESSAGE: {
+        case ADD_MESSAGE: {
             const {
                 message,
                 chatId,
@@ -15,10 +15,10 @@ export const messagesReducer = (state = initiatialState, action) => {
 
             const newMessage = {...state.messages};
 
-            newMessage[chatId] = [
-                ...(newMessages[chatId] || []),
-                message,
-            ]
+            newMessage[chatId] = {
+                ...(newMessages[chatId] || {}),
+                [message.id]: message,
+            }
 
             return {
                 message: newMessages
