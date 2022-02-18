@@ -2,7 +2,7 @@ import { Button, makeStyles } from "@material-ui/core";
 import { Switch } from "react-router-dom";
 import { ChatList } from "../../components";
 import { Messages } from "../Messages";
-
+import { withChats } from "../../hocs/withChats";
 
 const useStyles = makeStyles({
     wrapper: {
@@ -34,3 +34,5 @@ export const ChatsRender = ({
         </div>
     );
 };
+
+export const Chats = withChats(ChatsRender);

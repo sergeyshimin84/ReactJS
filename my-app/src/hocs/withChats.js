@@ -18,12 +18,22 @@ export const withChats = (Component) => {
         const dispatch = useDispatch();
 
         const onCreateChat = useCallback(() => {
-            dispatch(addChat(createChat('chat name')))
+            dispatch(addChatWithThunk(createChat('chat name')))
         }, []);
 
         const onDeleteChat = useCallback((chatId) => {
-            dispatch(removeChat(chatId))
-            dispatch(removeMessagesByChatID(chatId))
+            dispatch(removeChatWithThunk(chatId))
+            dispatch(removeMessagesByChatIDWithThunk(chatId))
+        }, [])
+
+        useEffect(() => {
+            dispatch(onTrackingAddChatWithThunk);
+            dispatch(onTrackingRemoveChatWithThunk);
+
+            return () => {
+                dispatch(offTrackingAddChatWithThunk);
+                dispatch(offTrackingRemoveChatWithThunk);
+            }
         }, [])
 
         return <Component

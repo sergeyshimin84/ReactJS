@@ -1,21 +1,38 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { sendMessageWithThunk } from "../store/messages/actions";
-import { getChatMessagesById } from "../store/messages/selectors";
+import { 
+    addMessageWithThunk,
+    offTrackingAddMessageWithThunk, offTrackingRemoveMessageWithThunk,
+    onTrackingAddMessageWithThunk, onTrackingRemoveMessageWithThunk
+} from "../store/messages/actions";
+import { getChatMessagesListById } from "../store/messages/selectors";
 import { hasChatById } from "../store/chats/selectors";
 import { useParams } from "react-router-dom";
-import { USER_AUTHOR } from '';
-import { Component } from "react";
+import { createMessage } from "../helpers"; 
+import { getUserId } from "../store/user/selectors";
 
 export const withChatMessages = (Component) => {
     return (props) => {
         const {chatId} = useParams();
         const dispatch = useDispatch();
-        const messageList = useSelector(getChatMessagesById(chatId));
+        const userId = useSelector(getUserId);
+        const messageList = useSelector(getChatMessagesListById(chatId));
         const hasChat = useSelector(hasChatById(chatId));
 
         const onSendMessage = (text) => {
-            dispatch(sendMessageWithThunk(USER_AUTHOR, text, chatId))
+            const message = createMessage(userId, text)
+            dispatch(addMessageWithThunk(message, chatId))
         };
+
+        useEffect(() => {
+            dispatch(onTrackingAddMessageWithThunk(chatId))
+            dispatch(onTrackingRemoveMessageWithThunk(chatId))
+
+            return () => {
+                dispatch(offTrackingAddMessageWithThunk(chatId))
+                dispatch(offTrackingRemoveMessageWithThunk(chatId))
+            }
+        }, [chatId])
 
         return <Component
             {...props}
